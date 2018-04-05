@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['username'])) 
+    header('location:http://localhost/udaan/policy_advocacy.php');
+?>
+
 <!doctype html>
 <html>
   <head>
@@ -21,12 +27,7 @@
 }
 
 /* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 3.0s;
-  animation-name: fade;
-  animation-duration: 3.0s;
-}
+
 
 @-webkit-keyframes fade {
   from {opacity: .4} 
@@ -114,192 +115,235 @@
     
   </head>
   <body>
-    <!--top part-->
-
-    <div class="container-fluid"><br/><br/>
-    <div class="jumbotron" style="background-color:steelblue;"><h1 align="center"><img src="photos\udaan1.jpg" style="width:100px;height:100px;"/> Udaan</h1></div>
-
-        <div class="container-fluid">
-    <nav class="navbar navbar-inverse" style="background-color:steelblue;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-        <a class="navbar-brand" href="user_index.php" ><img src="photos\udaan1.jpg" style="width:30px;height;30px;"/></a></div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav" >
-      <li class="active"><a href="user_index.php"style="color:white;font-weight:bold;font-size:18px;"><i class="material-icons" style="font-size:18px">home</i>Home</a></li>
-      <li><a href="user_initiatives.php" style="color:white;font-weight:bold;font-size:18px;">Initiatives</a></li>
-      <li><a href="user_events.php" style="color:white;font-weight:bold;font-size:18px;">Events</a></li>
-      <li><a href="user_gallery.php" style="color:white;font-weight:bold;font-size:18px;">Gallery</a></li>
-      <li><a href="user_discussion.php" style="color:white;font-weight:bold;font-size:18px;">Discussion</a></li>
-      <li><a href="user_advocacy.php" style="color:white;font-weight:bold;font-size:18px;">Advocacy</a></li>
-      <li><a href="user_contactus.php" style="color:white;font-weight:bold;font-size:18px;">Contact us</a></li>
-      <li><a href="user_donate.php" style="color:white;font-weight:bold;font-size:18px;">Donate Now</a></li>
-      <li><a href="user_about.php" style="color:white;font-weight:bold;font-size:18px;">About us</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="login.php" style="color:white;font-weight:bold;font-size:18px;"><i class="material-icons" style="font-size:18px">person</i> Log-in</a></li>
-      <li><a href="signup.php" style="color:white;font-weight:bold;font-size:18px;"><i class="material-icons" style="font-size:18px">person_add</i> Sign-up</a></li>
-    </ul></div>
-      </div></div>
-    </nav>
-    </div></div>
+    
+      <!--top part-->
+<br/>
+<header>
     <div class="container-fluid">
-      <div class="jumbotron" >
-        <img class="img-responsive" src="p_advocacy.jpg" alt="advocacy"/>
-        <br/>
-        <div class="container-fluid">
-            <div class="jumbotron">
-            
-           <div class="row">
-     <div class="col-md-4 col-sm-12 col-xs-12">
-     <h2><a href="user_policy.php">Policy Advocacy
-</a></h2>   
-     </div><!--col-md-4 col-sm-12 col-xs-12-->
-      <div class="col-md-4 col-sm-12 col-xs-12">
-     <h2><a href="user_legal.php">Legal Advocacy
-</a></h2>   
-     </div><!--col-md-4 col-sm-12 col-xs-12-->
-      <div class="col-md-4 col-sm-12 col-xs-12">
-     <h2><a href="user_media.php">Media Advocacy</a></h2>   
-     </div><!--col-md-4 col-sm-12 col-xs-12-->
-     
-     </div>  
-
-    </div>
-    <h1 style="color:red;">Policy Advocacy</h1>
-    <br/>
-    <div style="border:2px solid grey;border-radius:15px;">
-   <h3 style="color:skyblue;"> G.O. Ms. 01/2003 in united Andhra Pradesh, first ever Anti Trafficking Policy.</h3>
-   <br/>
-
-<h3 style="color:skyblue;">C.NO.21/DIG/WPC/CID/2003,circular from Andhra Police restricting the use of clause that criminalizes soliciting and promoting the use of sections in the law that prosecutes the traffickers</h3>
-<br/>
-<h3 style="color:skyblue">
-G.O. Ms. No.16/2010 in United Andhra Pradesh directing Minimum Standards of Care that should be followed by all Protective Homes</h3>
-
-<h3 style="color:skyblue">Memo No. 2323/WP.A2/2011 in United Andhra Pradesh directing video conferencing to be used for recording of evidence by Legal Services Authority</h3>
-
-<h3 style="color:skyblue">Memo.No. 2316/Schemes.A1/2017-1 in Telanagana for co-mangement of Protective Home.</h3>
-</div>
-<br/>
-
-  </div>
-  <div  class="jumbotron container-fluid" style="background-color:steelblue;">
-  <footer class="main-footer" >   
-
-    <!--Widgets Section-->
-    <div class="widgets-section">
-        <div class="container" style="background-color:steelblue;">
-            <div class="row">
-                <!--Big Column-->
-                <div class="col-md-5 col-sm-12 col-xs-12">
-                    <div class="row clearfix">   
-                        <!--Footer Column-->
-                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                            <div class="footer-widget information-widget">
-                              <br/><br/><br/><br/><br/>
-                            <h3 class="footer-title" style="font-size:27px;color:maroon;">Quick Links</h3><br/>
-                            <div class="widget-content">
-                            <ul class="list footer-menu">
-                            <li ><a href="udaan_index.php" style="font-size:20px;color:white;">Home</a></li>
-                            <li><a href="initiatves.php" style="font-size:20px;color:white;">Initiatives</a></li>
-                            <li><a href="about.php" style="font-size:20px;color:white;">The Team</a></li>
-                            <li><a href="events.php" style="font-size:20px;color:white;">Events</a></li>
-                            <li><a href="gallery.<?php  ?>" style="font-size:20px;color:white;">Gallery</a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Footer Column-->
-                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                            <div class="footer-widget works-widget">
-                                <div class="widget-content pad-62" style="margin-top:70px;">
-                                <ul class="list footer-menu">
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <li><a href="discussion.php" style="font-size:20px;color:white;">Discussion
-</a></li>
-                                 <li><a href="advocacy.php" style="font-size:20px;color:white;"> Advocacy</a></li>
-                   
-
-                                        <li><a href="contactus.php" style="font-size:20px;color:white;">Contact us</a>
-<!--
-                            <ul class="footer-dropdown">
-                            <li><a href="#"> Family Reunion</a></li>
-                            <li><a href="#">Marriage</a></li>
-                            <li><a href="#">Independent Living</a></li>        
-                            </ul>        
--->
-                            </li>    
-                               <li><a href="about.php" style="font-size:20px;color:white;">About us</a>
-<!--
-                            <ul class="footer-dropdown">
-                            <li><a href="#"> Legal Advocacy</a></li>
-                            <li><a href="#">Policy Advocacy</a></li>
-                            <li><a href="#">Media Advocacy</a></li>        
-                            </ul>        
--->
-                            </li>            
-                                    </ul>
-                            <div class="clearfix"></div>
-                            <br /> <br /> <br /> <br/><br/>        
-                            <a href="donate.php" class="thm-btn style-2" style="font-size:20px;color:khaki;"><i class="fa fa-life-ring" aria-hidden="true"></i> donate now</a>   <div class="clearfix"></div>
-                            <br />             
-                                </div>
-                            </div>
-                        </div>
+        <nav class="navbar navbar-default" role="navigation">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header">
+              <div class="navbar-brand">
+                <a href="user_index.php" style="font-size:40px;color:teal;font-family:'Berkshire Swash'"><img src="photos\udaan1.jpg" style="width:70px;height:70px;"/> Udaan</a>
+              </div>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <div class="menu" >
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation"><a href="user_index.php"><i class="material-icons" style="font-size:18px">home</i>Home</a></li>
+                  <li role="presentation"><a href="user_initiatives.php" >Initiatives</a></li>
+                  <li role="presentation"><a href="user_events.php" >Events</a></li>
+                  <li role="presentation"><a href="user_gallery.php" >Gallery</a></li>
+                  <li role="presentation"><a href="user_discussion.php">Discussion</a></li>
+                  <li role="presentation">
+                      <a class="dropdown-toggle" type="button" href="advocacy.php" data-toggle="dropdown">Advocacy <span class="caret"></span></a>
+                      <ul class=" dropdown-menu">
+                        <li role="presentation"><a href="user_legal.php" role="presentation">Legal Advocacy</a></li>
+                        <li role="presentation"><a href="user_policy.php" role="presentation">Policy Advocacy</a></li>
+                        <li role="presentation"><a href="user_media.php" role="presentation">Media Advocacy</a></li>
+                      </ul>
+                  </li>
+                  <li role="presentation"><a type="button"  data-toggle="modal" data-target="#myModal3" >Contact us</a></li>
+                  <li role="presentation"><a href="user_donate.php">Donate Now</a></li>
+                  <li role="presentation"><a href="user_stories.php" >Stories</a></li>
+                  <li role="presentation"><a href="user_about.php" >About us</a></li>
+                  <li>
+                    <div class="dropdown">
+                      <button  class="btn btn-default dropdown-toggle" style="margin-top:8px;margin-right:20px" data-toggle="dropdown">Hi,  <?php echo $_SESSION['username']?> <span class="caret"></span></button>
+                      <ul class=" dropdown-menu">
+                        <li><a href="logout.php" role="presentation"><i class="fa fa-sign-out" style="font-size:18px;color:red;"></i> Log-Out</a></li>
+                      </ul>
                     </div>
-                </div>
-                
-                <!--Big Column-->
-                <div class="col-md-7 col-sm-12 col-xs-12">
-                    <div class="row clearfix">
-                             <!--Footer Column-->
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </div>
+  </header>
 
-                     <div class="footer-column col-md-8 col-sm-6 col-xs-12">
-                            <div class="footer-widget information-widget">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                                <h3 class="footer-title" style="font-size:27px;color:maroon;">Quick Contact</h3><br/>
-                                <div class="widget-content">
-                                    <ul class="contact-info">
-                                        <li style="line-height:25px;"><span style="font-size:20px;color:white;" class="fa fa-map-marker"></span><span style="font-size:20px;color:white;"> NIT Raipur,
-G.E. Road<br/>
-Raipur (City),
-Raipur (District),<br/>
-Chhattisgarh State,<br/> India PIN: 492015</span></li>
-                                        <li><span class="fa fa-envelope-o" style="font-size:20px;color:white;"></span><span style="font-size:20px;color:white;"> udaan@gmail.com</span></li>
-                                        <li><span class="fa fa-phone" style="font-size:20px;color:white;"></span><span style="font-size:20px;color:white;"> +91 96 94 887366</span></li>
-                                    </ul>
-                              
-       
-                                </div>
-                            </div>
-                        </div>
-                        <!--Footer Column-->
-                        </div>
-                </div>
-                
-             </div>
-         </div>
-     </div>
+    <br/>
+<br/>
+
+<div class="container-fluid">
+  <h3 style="font-size:50px;color:teal;font-family:'Berkshire Swash';text-align:center;">Policy Advocacy</h3>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+  <div class="container-fluid">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <br/><br/>
+      <img class="img-responsive" src="photos\p_advocacy.jpg" alt="advocacy"/>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <br/><br/>
+      <ol>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i> G.O. Ms. 01/2003 in united Andhra Pradesh, first ever Anti Trafficking Policy.
+        </li>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i> C.NO.21/DIG/WPC/CID/2003,circular from Andhra Police restricting the use of clause that criminalizes soliciting and promoting the use of sections  in   the law that prosecutes the traffickers.
+        </li>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i>
+
+          G.O. Ms. No.16/2010 in United Andhra Pradesh directing Minimum Standards of Care that should be followed by all Protective Homes.
+        </li>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i> Memo No. 2323/WP.A2/2011 in United Andhra Pradesh directing video conferencing to be used for recording of evidence by Legal Services Authority.
+        </li>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i> Memo.No. 2316/Schemes.A1/2017-1 in Telanagana for co-mangement of Protective Home.
+        </li>
+      </ol>
+    </div>
+  </div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+  <div class="container-fluid">
+    <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4" style="text-align:center;">
+      <br/><br/>
+      <a href="policy_advocacy.php" style="font-size:35px;color:teal;font-family:'Berkshire Swash';">Policy Advocacy</a>
+    </div>
+    <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4" style="text-align:center;">
+      <br/><br/>
+      <a href="media_advocacy.php" style="font-size:35px;color:teal;font-family:'Berkshire Swash';text-align:center;">Media Advocacy</a>
+    </div>
+    <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4" style="text-align:center;">
+      <br/><br/>
+      <a href="legal_advocacy.php" style="font-size:35px;color:teal;font-family:'Berkshire Swash';text-align:center;">Legal Advocacy</a>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xg-12">
+        <br/><br/><br/><br/>
+        <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12">
+          <h3 class="header" style="font-color:maroon;text-align:center;font-size:30px;">Quick Links</h3>
+          <hr width="20%" align="center" />
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <br/><br/>
+              <ul class="list footer-menu" style="line-height: 30px;">
+                  <li><a href="udaan_index.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Home</a></li>
+                  <li><a href="initiatives.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Initiatives</a></li>
+                  <li><a href="about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">The Team</a></li>
+                  <li><a href="events.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Events</a></li>
+                  <li><a href="gallery.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Gallery</a></li>
+                  <li><a href="discussion.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Discussion</a></li>
+                  <li><a href="advocacy.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';"> Advocacy</a></li>
+                  <li><a type="button"  data-toggle="modal" data-target="#myModal3" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Contact us</a></li>    
+                  <li><a href="about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">About us</a></li>
+              </ul>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <br/><br/><br/><br/>
+            <ul class="contact-info" style="line-height:30px;">
+              <li><span style="font-size:30px;color:red;" class="fa fa-map-marker"></span><span style="font-size:25px;color:teal;font-family:'Berkshire Swash';">  NIT Raipur,
+                G.E. Road<br/>
+                Raipur (City),
+                Raipur (District),<br/>
+                Chhattisgarh State,<br/> India PIN: 492015</span></li>
+              <li><span class="fa fa-envelope-o" style="font-size:30px;color:red;"></span><span style="font-size:25px;color:teal;font-family:'Berkshire Swash';">  udaan@gmail.com</span></li>
+              <li><span class="fa fa-phone" style="font-size:30px;color:green;"></span><span style="font-size:25px;color:teal;font-family:'Berkshire Swash';">  +91 96 94 887366</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class=" col-md-4 col-md-offset-1 col-xs-12 col-lg-4 col-sm-12">
+          <h3 class="header" style="font-color:maroon;text-align:center;font-size:30px;">Leave a Message</h3>
+            <hr width="20%" align="center" />
+            <br/>
+          <form class="form-horizontal" action="contact.php" method="post">
+            <div class="form-group">
+                <label for="name" class="control-label">Name*</label>
+              <div >
+                <input class="form-control" type="text" placeholder="Name" id="name" name="name" required/>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label">E-Mail*</label>
+              <div >
+                <input class="form-control" type="text" placeholder="E-Mail Id" id="email" name="email" required/>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label">Subject*</label>
+              <div>
+                <input class="form-control" type="text" placeholder="Subject" id="subject" name="subject" required/>
+              </div>
+            </div>
+            <div class="form-group" >        
+              <label for="comment" class="control-label">Message</label>
+              <div >
+                <textarea class="form-control" row="5" type="message" placeholer="Write your Message here!!" id="comment" name="message"></textarea>
+              </div>
+            </div>
+            <div class="form-group">        
+              <div>
+                <button type="submit" class="btn btn-success">Send Message</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--modal Contact us-->
+  <div id="myModal3" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h1 style="font-size:30px;color:teal;font-family:'Berkshire Swash';text-align:center;" class="modal-title">Contact Us</h1>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+      <div>
+          <div>
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">mail_outline</i> Email Us</h3><br/>
+              <span style="font-size:20px;color:maroon;">
+                udaan@gmail.com
+              </span>
+          </div>
+          <div>
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">call</i> Phone No.</h3>
+              <br/>
+              <span style="font-size:20px;color:maroon;">
+                +91 96 94 887366,<br/>
+                +91 76 97 518432
+              </span>
+          </div>
+          <div >
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">place</i> Address</h3>
+              <br/>
+              <span style="font-size:20px;color:maroon;"> NIT Raipur,
+                      G.E. Road<br/>
+                      Raipur (City),
+                      Raipur (District),<br/>
+                      Chhattisgarh State,<br/> India PIN: 492015</span>
+          </div>
+      </div>
+  </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
      
      <!--Footer Bottom-->
-     <br/><hr width="75%" align="center"/>
+     <br/>
+     <br/>
+     <br/>
      <div class="footer-bottom">
         <div class="container">
             <div class="text" style="font-size:20px;color:white;text-align:center;">
@@ -308,7 +352,6 @@ Chhattisgarh State,<br/> India PIN: 492015</span></li>
         </div><!-- /.container -->
     </div>
      
-</footer>
 
 <!--bottom part end-->
 

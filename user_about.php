@@ -81,48 +81,59 @@
 </head>
 <body>
 
-    <div class="container-fluid"><br/><br/>
-    <div class="jumbotron" style="background-color:steelblue;"><h1 align="center"><img src="photos\udaan1.jpg" style="width:100px;height:100px;"/> Udaan</h1></div>
-
-      <div class="container-fluid">
-  <nav class="navbar navbar-inverse" style="background-color:steelblue;">
+    <br/>
+<header>
     <div class="container-fluid">
-      <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-      </button>
-    
-    <a class="navbar-brand" href="user_index.php" ><img src="photos\udaan1.jpg" style="width:30px;height;30px;"/></a></div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-    <ul class="nav navbar-nav" >
-    <li ><a href="user_index.php"style="color:white;font-weight:bold;font-size:18px;"><i class="material-icons" style="font-size:18px">home</i>Home</a></li>
-    <li><a href="user_Initiatives.php" style="color:white;font-weight:bold;font-size:18px;">Initiatives</a></li>
-    <li><a href="user_events.php" style="color:white;font-weight:bold;font-size:18px;">Events</a></li>
-    <li><a href="user_gallery.php" style="color:white;font-weight:bold;font-size:18px;">Gallery</a></li>
-    <li><a href="user_discussion.php" style="color:white;font-weight:bold;font-size:18px;">Discussion</a></li>
-    <li><a href="user_advocacy.php" style="color:white;font-weight:bold;font-size:18px;">Advocacy</a></li>
-    <li><a href="user_contactus.php" style="color:white;font-weight:bold;font-size:18px;">Contact us</a></li>
-    <li><a href="user_donate.php" style="color:white;font-weight:bold;font-size:18px;">Donate Now</a></li>
-    <li class="active"><a href="user_about.php" style="color:white;font-weight:bold;font-size:18px;">About us</a></li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
-        <li>
-          <div class="dropdown">
-              <button  class="btn btn-default dropdown-toggle" style="margin-top:8px;margin-right:20px" data-toggle="dropdown">Hello, <?php echo $_SESSION['username']?> <span class="caret"></span></button>
-                  <ul class=" dropdown-menu">
-            <li><a href="logout.php"><i class="fa fa-sign-out" style="font-size:18px;color:red;"></i> Log-Out</a></li>
-          </ul>
-      </div>
-    </li>
-    </ul></div>
-    </div></div>
-    </nav>
-  </div></div><br/><br/><br/>
+        <nav class="navbar navbar-default" role="navigation">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header">
+              <div class="navbar-brand">
+                <a href="user_index.php" style="font-size:40px;color:teal;font-family:'Berkshire Swash'"><img src="photos\udaan1.jpg" style="width:70px;height:70px;"/> Udaan</a>
+              </div>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <div class="menu" >
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation"><a href="user_index.php"><i class="material-icons" style="font-size:18px">home</i>Home</a></li>
+                  <li role="presentation"><a href="user_initiatives.php" >Initiatives</a></li>
+                  <li role="presentation"><a href="user_events.php" >Events</a></li>
+                  <li role="presentation"><a href="user_gallery.php" >Gallery</a></li>
+                  <li role="presentation"><a href="user_discussion.php">Discussion</a></li>
+                  <li role="presentation">
+                      <a class="dropdown-toggle" type="button" href="advocacy.php" data-toggle="dropdown">Advocacy <span class="caret"></span></a>
+                      <ul class=" dropdown-menu">
+                        <li role="presentation"><a href="user_legal.php" role="presentation">Legal Advocacy</a></li>
+                        <li role="presentation"><a href="user_policy.php" role="presentation">Policy Advocacy</a></li>
+                        <li role="presentation"><a href="user_media.php" role="presentation">Media Advocacy</a></li>
+                      </ul>
+                  </li>
+                  <li role="presentation"><a type="button"  data-toggle="modal" data-target="#myModal3" >Contact us</a></li>
+                  <li role="presentation"><a href="user_donate.php">Donate Now</a></li>
+                  <li role="presentation"><a href="user_stories.php" >Stories</a></li>
+                  <li role="presentation"><a href="user_about.php" >About us</a></li>
+                  <li>
+                    <div class="dropdown">
+                      <button  class="btn btn-default dropdown-toggle" style="margin-top:8px;margin-right:20px" data-toggle="dropdown">Hi,  <?php echo $_SESSION['username']?> <span class="caret"></span></button>
+                      <ul class=" dropdown-menu">
+                        <li><a href="logout.php" role="presentation"><i class="fa fa-sign-out" style="font-size:18px;color:red;"></i> Log-Out</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </div>
+  </header>
+
+    <br/><br/><br/>
 
 <p style = "color : teal; font-size : 30px; font-family : Verdana; text-align : center;"><q>Women need it, want it, deserve it,
-	as much as they do.</q></p>
+  as much as they do.</q></p>
 <p style = "color : teal; font-size : 20px; font-family : Verdana; margin : 30px 30px;">
 Udaan is a pioneering women empowering organization working on the issue of giving life and hope in the lives 
 of women who were thrashed recklessly by the orthodox cliche of the society.<br><br>
@@ -131,168 +142,184 @@ of women who were thrashed recklessly by the orthodox cliche of the society.<br>
  for ensuring holistic victim services.
  </p><br>
 <p>
-	<h3><p style = "color : gray; text-align : center; font-size : 30px; font-family : Swiss;">
-		WHO WE ARE??</p></h3><br><br>
-	
+  <h3><p style = "color : gray; text-align : center; font-size : 30px; font-family : Swiss;">
+    WHO WE ARE??</p></h3><br><br>
 </p>
-<div class="container-fluid">
-    <div class="jumbotron">
-<div class="row">
-  <div class="column" style="background-color:rgba(0, 180, 255, 0.8); font-family : Swiss;">
-    <h2 align = "center">AIM</h2>
-    <p>Our aim is to provide aid to the needy women, encourage them morally, provide them support groups and
-		create awareness among them.</p>
+
+  <div class="container-fluid"> 
+    <div class="row">
+        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" style="background-color:rgba(0, 180, 255, 0.8); font-family : Swiss; height:300px;font-size:23px;">
+          <h2 align = "center">AIM</h2>
+          <p>Our aim is to provide aid to the needy women, encourage them morally, provide them support groups and
+            create awareness among them.</p>
+        </div>
+        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" style="background-color:rgba(0, 180, 255, 0.6); font-family : Swiss; height:300px;font-size:23px;">
+          <h2 align = "center">APPROACH</h2>
+          <p>We believe development goes by hand in hand. Our approach is to make a platform worthy to handle 
+            queries related to the women's issue.</p>
+        </div>
+        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" style="background-color:rgba(0, 180, 255, 0.4); font-family : Swiss; height:300px;font-size:23px;">
+          <h2 align = "center">REHABILIATION</h2>
+          <p>We want to make women believe that they still have life ahead of them and here again we will provide
+            all the possible opportunities to our mockingbirds.</p>
+        </div>
+        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" style="background-color:rgba(0, 180, 255, 0.2); font-family : Swiss; height:300px;font-size:23px;">
+          <h2 align = "center">RE-INTEGRATION</h2>
+          <p>We will try our level best to give them the amazing self-confidence by our very own special interaction
+            programs and make sure to make them independent by providing them different job opportunities.</p>
+        </div>
+    </div>
   </div>
-  <div class="column" style="background-color:rgba(0, 180, 255, 0.6); font-family : Swiss;">
-    <h2 align = "center">APPROACH</h2>
-    <p>We believe development goes by hand in hand. Our approach is to make a platform worthy to handle 
-		queries related to the women's issue.</p>
-  </div>
-  <div class="column" style="background-color:rgba(0, 180, 255, 0.4); font-family : Swiss;">
-    <h2 align = "center">REHABILIATION</h2>
-    <p>We want to make women believe that they still have life ahead of them and here again we will provide
-		all the possible opportunities to our mockingbirds.</p>
-  </div>
-  <div class="column" style="background-color:rgba(0, 180, 255, 0.2); font-family : Swiss;">
-    <h2 align = "center">RE-INTEGRATION</h2>
-    <p>We will try our level best to give them the amazing self-confidence by our very own special interaction
-		programs and make sure to make them independent by providing them different job opportunities.</p>
-  </div></div></div>
-</div><br><br>
-<p style = "color : gray; text-align : center; font-family : Swiss; font-size : 30px; font-weight : bold;">
-	OUR TEAM</p><br><br>
+  
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <p style = "color : gray; text-align : center; font-family : Swiss; font-size : 30px; font-weight : bold;">
+   OUR TEAM</p><br><br>
   <div class="container-fluid">
-    <div class="jumbotron" style="background-color:white;">
-  <div class="row">
-  <div class="col-sm-4">
-    <div class="content">
-      <img src="photos\arvind.jpg" alt="Mountains" style="width:100%">
-      <h3>Arvind</h3>
+    <div class="row">
+      <div class="col-sm-12 col-md-4 col-xs-12 col-lg-4">
+        <div class="content">
+          <img src="photos\nandita.jpg" alt="Mountains" style="width:100%">
+          <h3>Nandita Prasad</h3>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4 col-xs-12 col-lg-4">
+        <div class="content">
+          <img src="gallery\arvind.jpg" alt="Lights" style="width:100%">
+          <h3>Arvind</h3>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4 col-xs-12 col-lg-4">
+        <div class="content">
+          <img src="gallery\ashrut.jpg" alt="Nature" style="width:100%">
+          <h3>Ashrut Arya</h3>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="col-sm-4">
-    <div class="content">
-    <img src="gallery\a1.jpg" alt="Lights" style="width:100%">
-      <h3>Ashrut Arya</h3>
+
+</div><br/>
+
+<div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xg-12">
+        <br/><br/><br/><br/>
+        <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12">
+          <h3 class="header" style="font-color:maroon;text-align:center;font-size:30px;">Quick Links</h3>
+          <hr width="20%" align="center" />
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <br/><br/>
+              <ul class="list footer-menu" style="line-height: 30px;">
+                  <li><a href="udaan_index.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Home</a></li>
+                  <li><a href="initiatives.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Initiatives</a></li>
+                  <li><a href="about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">The Team</a></li>
+                  <li><a href="events.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Events</a></li>
+                  <li><a href="gallery.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Gallery</a></li>
+                  <li><a href="discussion.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Discussion</a></li>
+                  <li><a href="advocacy.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';"> Advocacy</a></li>
+                  <li><a type="button"  data-toggle="modal" data-target="#myModal3" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Contact us</a></li>    
+                  <li><a href="about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">About us</a></li>
+              </ul>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <br/><br/><br/><br/>
+            <ul class="contact-info" style="line-height:30px;">
+              <li><span style="font-size:30px;color:red;" class="fa fa-map-marker"></span><span style="font-size:25px;color:teal;font-family:'Berkshire Swash';">  NIT Raipur,
+                G.E. Road<br/>
+                Raipur (City),
+                Raipur (District),<br/>
+                Chhattisgarh State,<br/> India PIN: 492015</span></li>
+              <li><span class="fa fa-envelope-o" style="font-size:30px;color:red;"></span><span style="font-size:25px;color:teal;font-family:'Berkshire Swash';">  udaan@gmail.com</span></li>
+              <li><span class="fa fa-phone" style="font-size:30px;color:green;"></span><span style="font-size:25px;color:teal;font-family:'Berkshire Swash';">  +91 96 94 887366</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class=" col-md-4 col-md-offset-1 col-xs-12 col-lg-4 col-sm-12">
+          <h3 class="header" style="font-color:maroon;text-align:center;font-size:30px;">Leave a Message</h3>
+            <hr width="20%" align="center" />
+            <br/>
+          <form class="form-horizontal" action="contact.php" method="post">
+            <div class="form-group">
+                <label for="name" class="control-label">Name*</label>
+              <div >
+                <input class="form-control" type="text" placeholder="Name" id="name" name="name" required/>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label">E-Mail*</label>
+              <div >
+                <input class="form-control" type="text" placeholder="E-Mail Id" id="email" name="email" required/>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label">Subject*</label>
+              <div>
+                <input class="form-control" type="text" placeholder="Subject" id="subject" name="subject" required/>
+              </div>
+            </div>
+            <div class="form-group" >        
+              <label for="comment" class="control-label">Message</label>
+              <div >
+                <textarea class="form-control" row="5" type="message" placeholer="Write your Message here!!" id="comment" name="message"></textarea>
+              </div>
+            </div>
+            <div class="form-group">        
+              <div>
+                <button type="submit" class="btn btn-success">Send Message</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+              </div>
+          </form>
+        </div>
+      </div>
     </div>
+
+
+<!--modal Contact us-->
+  <div id="myModal3" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h1 style="font-size:30px;color:teal;font-family:'Berkshire Swash';text-align:center;" class="modal-title">Contact Us</h1>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+      <div>
+          <div>
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">mail_outline</i> Email Us</h3><br/>
+              <span style="font-size:20px;color:maroon;">
+                udaan@gmail.com
+              </span>
+          </div>
+          <div>
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">call</i> Phone No.</h3>
+              <br/>
+              <span style="font-size:20px;color:maroon;">
+                +91 96 94 887366,<br/>
+                +91 76 97 518432
+              </span>
+          </div>
+          <div >
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">place</i> Address</h3>
+              <br/>
+              <span style="font-size:20px;color:maroon;"> NIT Raipur,
+                      G.E. Road<br/>
+                      Raipur (City),
+                      Raipur (District),<br/>
+                      Chhattisgarh State,<br/> India PIN: 492015</span>
+          </div>
+      </div>
   </div>
-  <div class="col-sm-4">
-    <div class="content">
-    <img src="gallery\a2.jpg" alt="Nature" style="width:100%">
-      <h3>Nandita Prasad</h3>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>  </div></div></div>
 
-</div><br/><br/><br/>
-
-<!--footer-->
-  <div  class="container-fluid" style="background-color:steelblue;">
-  <footer class="main-footer" >   
-
-    <!--Widgets Section-->
-    <div class="widgets-section">
-        <div class="container" style="background-color:steelblue;">
-            <div class="row">
-                <!--Big Column-->
-                <div class="col-md-5 col-sm-12 col-xs-12">
-                    <div class="row clearfix">   
-                        <!--Footer Column-->
-                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                            <div class="footer-widget information-widget">
-                              <br/><br/><br/><br/><br/>
-                            <h3 class="footer-title" style="font-size:27px;color:maroon;">Quick Links</h3><br/>
-                            <div class="widget-content">
-                            <ul class="list footer-menu">
-                            <li ><a href="user_index.php" style="font-size:20px;color:white;">Home</a></li>
-                            <li><a href="user_Initiatives.php" style="font-size:20px;color:white;">Initiatives</a></li>
-                            <li><a href="user_about.php" style="font-size:20px;color:white;">The Team</a></li>
-                            <li><a href="user_events.php" style="font-size:20px;color:white;">Events</a></li>
-                            <li><a href="user_gallery.php" style="font-size:20px;color:white;">Gallery</a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Footer Column-->
-                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                            <div class="footer-widget works-widget">
-                                <div class="widget-content pad-62" style="margin-top:70px;">
-                                <ul class="list footer-menu">
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <li><a href="user_discussion.php" style="font-size:20px;color:white;">Discussion
-</a></li>
-                                 <li><a href="user_advocacy.php" style="font-size:20px;color:white;"> Advocacy</a></li>
-                   
-
-                                        <li><a href="user_contactus.php" style="font-size:20px;color:white;">Contact us</a>
-<!--
-                            <ul class="footer-dropdown">
-                            <li><a href="#"> Family Reunion</a></li>
-                            <li><a href="#">Marriage</a></li>
-                            <li><a href="#">Independent Living</a></li>        
-                            </ul>        
--->
-                            </li>    
-                               <li><a href="user_about.php" style="font-size:20px;color:white;">About us</a>
-<!--
-                            <ul class="footer-dropdown">
-                            <li><a href="#"> Legal Advocacy</a></li>
-                            <li><a href="#">Policy Advocacy</a></li>
-                            <li><a href="#">Media Advocacy</a></li>        
-                            </ul>        
--->
-                            </li>            
-                                    </ul>
-                            <div class="clearfix"></div>
-                            <br /> <br /> <br /> <br/><br/>        
-                            <a href="user_donate.php" class="thm-btn style-2" style="font-size:20px;color:khaki;"><i class="fa fa-life-ring" aria-hidden="true"></i> donate now</a>   <div class="clearfix"></div>
-                            <br />             
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!--Big Column-->
-                <div class="col-md-7 col-sm-12 col-xs-12">
-                    <div class="row clearfix">
-                             <!--Footer Column-->
-
-                     <div class="footer-column col-md-8 col-sm-6 col-xs-12">
-                            <div class="footer-widget information-widget">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                                <h3 class="footer-title" style="font-size:27px;color:maroon;">Quick Contact</h3><br/>
-                                <div class="widget-content">
-                                    <ul class="contact-info">
-                                        <li style="line-height:25px;"><span style="font-size:20px;color:white;" class="fa fa-map-marker"></span><span style="font-size:20px;color:white;"> NIT Raipur,
-G.E. Road<br/>
-Raipur (City),
-Raipur (District),<br/>
-Chhattisgarh State,<br/> India PIN: 492015</span></li>
-                                        <li><span class="fa fa-envelope-o" style="font-size:20px;color:white;"></span><span style="font-size:20px;color:white;"> udaan@gmail.com</span></li>
-                                        <li><span class="fa fa-phone" style="font-size:20px;color:white;"></span><span style="font-size:20px;color:white;"> +91 96 94 887366</span></li>
-                                    </ul>
-                              
-       
-                                </div>
-                            </div>
-                        </div>
-                        <!--Footer Column-->
-                        </div>
-                </div>
-                
-             </div>
-         </div>
-     </div>
      
      <!--Footer Bottom-->
      <br/><hr width="75%" align="center"/>

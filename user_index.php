@@ -1,7 +1,7 @@
 <?php
   session_start();
   if(!isset($_SESSION['username'])) 
-    header('location:http://localhost/udaan/login.php');
+    header('location:http://localhost/udaan/udaan_index.php');
 ?>
 
 <!doctype html>
@@ -26,12 +26,7 @@
 }
 
 /* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 3.0s;
-  animation-name: fade;
-  animation-duration: 3.0s;
-}
+
 
 @-webkit-keyframes fade {
   from {opacity: .4} 
@@ -132,8 +127,15 @@
                   <li role="presentation"><a href="user_events.php" >Events</a></li>
                   <li role="presentation"><a href="user_gallery.php" >Gallery</a></li>
                   <li role="presentation"><a href="user_discussion.php">Discussion</a></li>
-                  <li role="presentation"><a href="user_advocacy.php">Advocacy</a></li>
-                  <li role="presentation"><a href="user_contactus.php" >Contact us</a></li>
+                  <li role="presentation">
+                      <a class="dropdown-toggle" type="button" href="advocacy.php" data-toggle="dropdown">Advocacy <span class="caret"></span></a>
+                      <ul class=" dropdown-menu">
+                        <li role="presentation"><a href="user_legal.php" role="presentation">Legal Advocacy</a></li>
+                        <li role="presentation"><a href="user_policy.php" role="presentation">Policy Advocacy</a></li>
+                        <li role="presentation"><a href="user_media.php" role="presentation">Media Advocacy</a></li>
+                      </ul>
+                  </li>
+                  <li role="presentation"><a type="button"  data-toggle="modal" data-target="#myModal3" >Contact us</a></li>
                   <li role="presentation"><a href="user_donate.php">Donate Now</a></li>
                   <li role="presentation"><a href="user_stories.php" >Stories</a></li>
                   <li role="presentation"><a href="user_about.php" >About us</a></li>
@@ -190,25 +192,25 @@
     </ol>
     <div class="carousel-inner">
       <div class="item active">
-        <img src="edu.jpg" alt="pic_1"/>
+        <img src="slides\edu.jpg" alt="pic_1"/>
           <div class="carousel-caption">
             <h3 style="font-size:40px;">Girl's Education</h3>
           </div>
       </div>
       <div class="item">
-        <img src="acid.jpg" alt="pic_2"/>
+        <img src="slides\acid.jpg" alt="pic_2"/>
         <div class="carousel-caption">
           <h3 style="font-size:40px;">Happy Faces</h3>
         </div>
       </div>
       <div class="item">
-        <img src="working.jpg" alt="pic_3"/>
+        <img src="slides\working.jpg" alt="pic_3"/>
         <div class="carousel-caption">
           <h3 style="font-size:40px;">Self Reliability</h3>
         </div>
       </div>
       <div class="item">
-        <img src="download3.jpg" alt="pic_4"/>
+        <img src="slides\download3.jpg" alt="pic_4"/>
         <div class="carousel-caption">
           <h3 style="font-size:40px;font-color:maroon;">Skill Developement</h3>
         </div>
@@ -294,15 +296,15 @@
           <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
             <br/><br/>
               <ul class="list footer-menu" style="line-height: 30px;">
-                  <li><a href="udaan_index.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Home</a></li>
-                  <li><a href="initiatives.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Initiatives</a></li>
-                  <li><a href="about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">The Team</a></li>
-                  <li><a href="events.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Events</a></li>
-                  <li><a href="gallery.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Gallery</a></li>
-                  <li><a href="discussion.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Discussion</a></li>
-                  <li><a href="advocacy.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';"> Advocacy</a></li>
-                  <li><a href="contactus.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Contact us</a></li>    
-                  <li><a href="about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">About us</a></li>
+                  <li><a href="user_index.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Home</a></li>
+                  <li><a href="user_initiatives.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Initiatives</a></li>
+                  <li><a href="user_about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">The Team</a></li>
+                  <li><a href="user_events.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Events</a></li>
+                  <li><a href="user_gallery.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Gallery</a></li>
+                  <li><a href="user_discussion.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Discussion</a></li>
+                  <li><a href="user_advocacy.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';"> Advocacy</a></li>
+                  <li><a type="button"  data-toggle="modal" data-target="#myModal3" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Contact us</a></li>    
+                  <li><a href="user_about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">About us</a></li>
               </ul>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
@@ -353,6 +355,51 @@
                 <button type="reset" class="btn btn-warning">Reset</button>
               </div>
           </form>
+        </div>
+      </div>
+    </div>
+
+
+    <!--modal Contact us-->
+  <div id="myModal3" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h1 style="font-size:30px;color:teal;font-family:'Berkshire Swash';text-align:center;" class="modal-title">Contact Us</h1>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+      <div>
+          <div>
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">mail_outline</i> Email Us</h3><br/>
+              <span style="font-size:20px;color:maroon;">
+                udaan@gmail.com
+              </span>
+          </div>
+          <div>
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">call</i> Phone No.</h3>
+              <br/>
+              <span style="font-size:20px;color:maroon;">
+                +91 96 94 887366,<br/>
+                +91 76 97 518432
+              </span>
+          </div>
+          <div >
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">place</i> Address</h3>
+              <br/>
+              <span style="font-size:20px;color:maroon;"> NIT Raipur,
+                      G.E. Road<br/>
+                      Raipur (City),
+                      Raipur (District),<br/>
+                      Chhattisgarh State,<br/> India PIN: 492015</span>
+          </div>
+      </div>
+  </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
