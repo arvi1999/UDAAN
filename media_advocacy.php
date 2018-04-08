@@ -1,3 +1,75 @@
+<?php
+  require_once("connection.php");
+  $q2="create table user
+      (   firstname varchar(255),
+      lastname varchar(255),
+        email varchar(255),
+        username varchar(50) unique,
+        password varchar(150)
+          )";
+        mysqli_query($connection,$q2);
+  if(isset($_POST) & !empty($_POST))
+  {
+    $firstname = mysqli_real_escape_string($connection, $_POST['firstname']);
+    $lastname = mysqli_real_escape_string($connection, $_POST['lastname']);
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $username = mysqli_real_escape_string($connection, $_POST['username']);
+    $password = md5($_POST['password']);
+    $cpassword = md5($_POST['cpassword']);
+    
+    if($password == $cpassword){
+      $usernamesql = "SELECT * FROM user WHERE username='$username'";
+      $usernameres = mysqli_query($connection, $usernamesql);
+      $count = mysqli_num_rows($usernameres);
+      if($count == 1)
+        echo "Username exists in the database, try with a different username";
+      
+      $emailsql = "SELECT * FROM user WHERE email='$email'";
+      $emailres = mysqli_query($connection, $emailsql);
+      $ecount = mysqli_num_rows($emailres);
+      if($ecount == 1)
+        echo "Email exists in the database, please reset the password";
+      echo "Password matches";
+          $sql = "INSERT INTO user (firstname, lastname, email, username, password) VALUES 
+        ('$firstname','$lastname','$email','$username','$password')";
+    $result = mysqli_query($connection, $sql);
+    if($result)
+    {
+      echo "User registered successfully";
+      header('location:http://localhost/udaan/udaan_index.php');
+    }
+    else
+      echo "Registration failed";
+    }
+    else
+      echo "Password does not matches";
+
+  }
+?>
+
+<?php
+session_start();
+require("connection.php");
+if(isset($_POST) & !empty($_POST))
+{
+  $username = mysqli_real_escape_string($connection, $_POST['username']);
+  $password = md5($_POST['password']);
+  $sql = "SELECT * FROM user WHERE username = '$username' and password = '$password';";
+  $result = mysqli_query($connection, $sql);
+  $count = mysqli_num_rows($result);
+  if($count == 1)
+  {
+    $_SESSION['username'] = $username;
+    header('location:http://localhost/udaan/user_index.php');
+  }
+  else
+  {
+    echo "Invalid login";
+  }
+}
+?>
+
+
 <!doctype html>
 <html>
   <head>
@@ -11,6 +83,8 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="fonts/flaticon.css" />
     <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
     <link rel="stylesheet" href="slider/css/slider.css">
       <script src="jquery.js"></script>
     <script src="bootstrap.js"></script>
@@ -21,12 +95,7 @@
 }
 
 /* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 3.0s;
-  animation-name: fade;
-  animation-duration: 3.0s;
-}
+
 
 @-webkit-keyframes fade {
   from {opacity: .4} 
@@ -114,198 +183,199 @@
     
   </head>
   <body>
-    <!--top part-->
-
-    <div class="container-fluid"><br/><br/>
-    <div class="jumbotron" style="background-color:steelblue;"><h1 align="center"><img src="photos\udaan1.jpg" style="width:100px;height:100px;"/> Udaan</h1></div>
-
-        <div class="container-fluid">
-    <nav class="navbar navbar-inverse" style="background-color:steelblue;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-        <a class="navbar-brand" href="udaan_index.php" ><img src="photos\udaan1.jpg" style="width:30px;height;30px;"/></a></div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav" >
-      <li class="active"><a href="udaan_index.php"style="color:white;font-weight:bold;font-size:18px;"><i class="material-icons" style="font-size:18px">home</i>Home</a></li>
-      <li><a href="initiatives.php" style="color:white;font-weight:bold;font-size:18px;">Initiatives</a></li>
-      <li><a href="events.php" style="color:white;font-weight:bold;font-size:18px;">Events</a></li>
-      <li><a href="gallery.php" style="color:white;font-weight:bold;font-size:18px;">Gallery</a></li>
-      <li><a href="discussion.php" style="color:white;font-weight:bold;font-size:18px;">Discussion</a></li>
-      <li><a href="advocacy.php" style="color:white;font-weight:bold;font-size:18px;">Advocacy</a></li>
-      <li><a href="contactus.php" style="color:white;font-weight:bold;font-size:18px;">Contact us</a></li>
-      <li><a href="donate.php" style="color:white;font-weight:bold;font-size:18px;">Donate Now</a></li>
-      <li><a href="about.php" style="color:white;font-weight:bold;font-size:18px;">About us</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="login.php" style="color:white;font-weight:bold;font-size:18px;"><i class="material-icons" style="font-size:18px">person</i> Log-in</a></li>
-      <li><a href="signup.php" style="color:white;font-weight:bold;font-size:18px;"><i class="material-icons" style="font-size:18px">person_add</i> Sign-up</a></li>
-    </ul></div>
-      </div></div>
-    </nav>
-    </div></div>
+    <br/>
+<header>
     <div class="container-fluid">
-      <div class="jumbotron" >
-        <img class="img-responsive" src="social_media.png" alt="advocacy"/>
-        <br/>
-        <div class="container-fluid">
-            <div class="jumbotron">
-           <div class="row">
-     <div class="col-md-4 col-sm-12 col-xs-12">
-     <h2><a href="policy_advocacy.php">Policy Advocacy
-</a></h2>   
-     </div><!--col-md-4 col-sm-12 col-xs-12-->
-      <div class="col-md-4 col-sm-12 col-xs-12">
-     <h2><a href="legal_advocacy.php">Legal Advocacy
-</a></h2>   
-     </div><!--col-md-4 col-sm-12 col-xs-12-->
-      <div class="col-md-4 col-sm-12 col-xs-12">
-     <h2><a href="media_advocacy.php">Media Advocacy</a></h2>   
-     </div><!--col-md-4 col-sm-12 col-xs-12-->
-     
-     </div>   
+        <nav class="navbar navbar-default" role="navigation">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header">
+              <div class="navbar-brand">
+                <a href="udaan_index.php" style="font-size:40px;color:teal;font-family:'Berkshire Swash'"><img src="photos\udaan1.jpg" style="width:70px;height:70px;"/> Udaan</a>
+              </div>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <div class="menu" >
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation"><a href="udaan_index.php"><i class="material-icons" style="font-size:18px">home</i>Home</a></li>
+                  <li role="presentation"><a href="initiatives.php" >Initiatives</a></li>
+                  <li role="presentation"><a href="events.php" >Events</a></li>
+                  <li role="presentation"><a href="gallery.php" >Gallery</a></li>
+                  <li role="presentation"><a href="discussion.php">Discussion</a></li>
+                  <li role="presentation">
+                      <a class="dropdown-toggle" type="button" href="advocacy.php" data-toggle="dropdown">Advocacy <span class="caret"></span></a>
+                      <ul class=" dropdown-menu">
+                        <li role="presentation"><a href="legal_advocacy.php" role="presentation">Legal Advocacy</a></li>
+                        <li role="presentation"><a href="policy_advocacy.php" role="presentation">Policy Advocacy</a></li>
+                        <li role="presentation"><a href="media_advocacy.php" role="presentation">Media Advocacy</a></li>
+                      </ul>
+                  </li>
+                  <li role="presentation"><a type="button"  data-toggle="modal" data-target="#myModal3">Contact us</a></li>
+                  <li role="presentation"><a href="donate.php">Donate Now</a></li>
+                  <li role="presentation"><a href="stories.php" >Stories</a></li>
+                  <li role="presentation"><a href="about.php" >About us</a></li>
+                  <li role="presentation"><a type="button"  data-toggle="modal" data-target="#myModal2"><i class="material-icons" style="font-size:18px">person</i> Log-In</a></li>
+                  <li role="presentation"><a type="button"  data-toggle="modal" data-target="#myModal"><i class="material-icons" style="font-size:18px">person_add</i> Sign-up</a></li>
+                </ul>
+              </div>
+            </div>
+        </nav>
     </div>
-    <h1 style="color:red;">Media Advocacy</h1>
-    <br/>
-    <div style="border:2px solid grey;border-radius:15px;">
-   <h3 style="color:skyblue;"> Blogging and using social media to create public opinion on sex trafficking and sex crimes</h3>
-   <br/>
+  </header>
 
-<h3 style="color:skyblue;">Short Films and documentaries to sensitize communities on various aspects of sex trafficking and sex crime.</h3>
 <br/>
-<h3 style="color:skyblue">Collaborating with television channels to create mass awakening and critical consciousness on the impact of sex trafficking
-</h3>
+<br/>
 
-<h3 style="color:skyblue">Media Partners to support campaigns or specific issue-based intervention</h3>
-
-<h3 style="color:skyblue">Feature films to reach out to masses to awaken them regarding dangers of trafficking and inspiring them to take positive action.</h3>
+<div class="container-fluid">
+  <h3 style="font-size:50px;color:teal;font-family:'Berkshire Swash';text-align:center;">Media Advocacy</h3>
 </div>
+
 <br/>
-<div>
-  <h1 style="color:red";>So far..</h1>
-  <br/>
-  <div style="border:2px solid grey;border-radius:15px">
-    <h3 style="color:skyblue;">#ShameTheRapist campaign was spearheaded on the social media.</h3>
-    <br/>
-    <h3 style="color:skyblue">Swaraksha Campaign was done in collaboration with several television channels.</h3>
+<br/>
+<br/>
+<br/>
+
+<div class="container-fluid">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <br/><br/>
+      <img class="img-responsive" src="photos\media.jpg" alt="advocacy"/>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <br/><br/>
+      <ol>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i> Blogging and using social media to create public opinion on sex trafficking and sex crimes.
+        </li>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i> Short Films and documentaries to sensitize communities on various aspects of sex trafficking and sex crime.
+        </li>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i>
+
+         Collaborating with television channels to create mass awakening and critical consciousness on the impact of sex trafficking.
+        </li>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i> Media Partners to support campaigns or specific issue-based intervention
+        </li>
+        <li style="color:maroon;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i> Feature films to reach out to masses to awaken them regarding dangers of trafficking and inspiring them to take positive action.
+        </li>
+      </ol>
+    </div>
   </div>
-  <br/>
-  <br/>
-  <div  class="jumbotron container-fluid" style="background-color:steelblue;">
-  <footer class="main-footer" >   
 
-    <!--Widgets Section-->
-    <div class="widgets-section">
-        <div class="container" style="background-color:steelblue;">
-            <div class="row">
-                <!--Big Column-->
-                <div class="col-md-5 col-sm-12 col-xs-12">
-                    <div class="row clearfix">   
-                        <!--Footer Column-->
-                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                            <div class="footer-widget information-widget">
-                              <br/><br/><br/><br/><br/>
-                            <h3 class="footer-title" style="font-size:27px;color:maroon;">Quick Links</h3><br/>
-                            <div class="widget-content">
-                            <ul class="list footer-menu">
-                            <li ><a href="udaan_index.php" style="font-size:20px;color:white;">Home</a></li>
-                            <li><a href="initiatives.php" style="font-size:20px;color:white;">Initiatives</a></li>
-                            <li><a href="about.php" style="font-size:20px;color:white;">The Team</a></li>
-                            <li><a href="events.php" style="font-size:20px;color:white;">Events</a></li>
-                            <li><a href="gallery.php" style="font-size:20px;color:white;">Gallery</a></li>
+<br/>
+<br/>
+<br/>
+<br/>
 
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Footer Column-->
-                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                            <div class="footer-widget works-widget">
-                                <div class="widget-content pad-62" style="margin-top:70px;">
-                                <ul class="list footer-menu">
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <li><a href="discussion.php" style="font-size:20px;color:white;">Discussion
-</a></li>
-                                 <li><a href="advocacy.php" style="font-size:20px;color:white;"> Advocacy</a></li>
-                   
+<div>
+  <h3 style="color:teal;font-size:35px;font-family:Verdana;margin-left:20px;">So Far...</h3>
+  <ol>
+    <li style="color:green;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i>
+      #ShameTheRapist campaign was spearheaded on the social media.
+    </li>
+    <li style="color:green;font-size:25px;font-family:Verdana;"><i class="material-icons" style="font-color:teal;font-size:30px;">subdirectory_arrow_right</i>
+      Swaraksha Campaign was done in collaboration with several television channels.
+    </li>
+  </ol>
+</div>
 
-                                        <li><a href="contactus.php" style="font-size:20px;color:white;">Contact us</a>
-<!--
-                            <ul class="footer-dropdown">
-                            <li><a href="#"> Family Reunion</a></li>
-                            <li><a href="#">Marriage</a></li>
-                            <li><a href="#">Independent Living</a></li>        
-                            </ul>        
--->
-                            </li>    
-                               <li><a href="about.php" style="font-size:20px;color:white;">About us</a>
-<!--
-                            <ul class="footer-dropdown">
-                            <li><a href="#"> Legal Advocacy</a></li>
-                            <li><a href="#">Policy Advocacy</a></li>
-                            <li><a href="#">Media Advocacy</a></li>        
-                            </ul>        
--->
-                            </li>            
-                                    </ul>
-                            <div class="clearfix"></div>
-                            <br /> <br /> <br /> <br/><br/>        
-                            <a href="donate.php" class="thm-btn style-2" style="font-size:20px;color:khaki;"><i class="fa fa-life-ring" aria-hidden="true"></i> donate now</a>   <div class="clearfix"></div>
-                            <br />             
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!--Big Column-->
-                <div class="col-md-7 col-sm-12 col-xs-12">
-                    <div class="row clearfix">
-                             <!--Footer Column-->
+<br/>
+<br/>
+<br/>
+<br/>
 
-                     <div class="footer-column col-md-8 col-sm-6 col-xs-12">
-                            <div class="footer-widget information-widget">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                                <h3 class="footer-title" style="font-size:27px;color:maroon;">Quick Contact</h3><br/>
-                                <div class="widget-content">
-                                    <ul class="contact-info">
-                                        <li style="line-height:25px;"><span style="font-size:20px;color:white;" class="fa fa-map-marker"></span><span style="font-size:20px;color:white;"> NIT Raipur,
-G.E. Road<br/>
-Raipur (City),
-Raipur (District),<br/>
-Chhattisgarh State,<br/> India PIN: 492015</span></li>
-                                        <li><span class="fa fa-envelope-o" style="font-size:20px;color:white;"></span><span style="font-size:20px;color:white;"> udaan@gmail.com</span></li>
-                                        <li><span class="fa fa-phone" style="font-size:20px;color:white;"></span><span style="font-size:20px;color:white;"> +91 96 94 887366</span></li>
-                                    </ul>
-                              
-       
-                                </div>
-                            </div>
-                        </div>
-                        <!--Footer Column-->
-                        </div>
-                </div>
-                
-             </div>
-         </div>
-     </div>
+
+  <div class="container-fluid">
+    <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4" style="text-align:center;">
+      <br/><br/>
+      <a href="policy_advocacy.php" style="font-size:35px;color:teal;font-family:'Berkshire Swash';">Policy Advocacy</a>
+    </div>
+    <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4" style="text-align:center;">
+      <br/><br/>
+      <a href="media_advocacy.php" style="font-size:35px;color:teal;font-family:'Berkshire Swash';text-align:center;">Media Advocacy</a>
+    </div>
+    <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4" style="text-align:center;">
+      <br/><br/>
+      <a href="legal_advocacy.php" style="font-size:35px;color:teal;font-family:'Berkshire Swash';text-align:center;">Legal Advocacy</a>
+    </div>
+  </div>
+
+
+
+
+<div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xg-12">
+        <br/><br/><br/><br/>
+        <div class="col-md-6 col-xs-12 col-lg-6 col-sm-12">
+          <h3 class="header" style="font-color:maroon;text-align:center;font-size:30px;">Quick Links</h3>
+          <hr width="20%" align="center" />
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <br/><br/>
+              <ul class="list footer-menu" style="line-height: 30px;">
+                  <li><a href="udaan_index.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Home</a></li>
+                  <li><a href="initiatives.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Initiatives</a></li>
+                  <li><a href="about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">The Team</a></li>
+                  <li><a href="events.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Events</a></li>
+                  <li><a href="gallery.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Gallery</a></li>
+                  <li><a href="discussion.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Discussion</a></li>
+                  <li><a href="advocacy.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';"> Advocacy</a></li>
+                  <li><a type="button"  data-toggle="modal" data-target="#myModal3" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">Contact us</a></li>    
+                  <li><a href="about.php" style="font-size:25px;color:teal;font-family:'Berkshire Swash';">About us</a></li>
+              </ul>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <br/><br/><br/><br/>
+            <ul class="contact-info" style="line-height:30px;">
+              <li><span style="font-size:30px;color:red;" class="fa fa-map-marker"></span><span style="font-size:25px;color:teal;font-family:'Berkshire Swash';">  NIT Raipur,
+                G.E. Road<br/>
+                Raipur (City),
+                Raipur (District),<br/>
+                Chhattisgarh State,<br/> India PIN: 492015</span></li>
+              <li><span class="fa fa-envelope-o" style="font-size:30px;color:red;"></span><span style="font-size:25px;color:teal;font-family:'Berkshire Swash';">  udaan@gmail.com</span></li>
+              <li><span class="fa fa-phone" style="font-size:30px;color:green;"></span><span style="font-size:25px;color:teal;font-family:'Berkshire Swash';">  +91 96 94 887366</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class=" col-md-4 col-md-offset-1 col-xs-12 col-lg-4 col-sm-12">
+          <h3 class="header" style="font-color:maroon;text-align:center;font-size:30px;">Leave a Message</h3>
+            <hr width="20%" align="center" />
+            <br/>
+          <form class="form-horizontal" action="contact.php" method="post">
+            <div class="form-group">
+                <label for="name" class="control-label">Name*</label>
+              <div >
+                <input class="form-control" type="text" placeholder="Name" id="name" name="name" required/>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label">E-Mail*</label>
+              <div >
+                <input class="form-control" type="text" placeholder="E-Mail Id" id="email" name="email" required/>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label">Subject*</label>
+              <div>
+                <input class="form-control" type="text" placeholder="Subject" id="subject" name="subject" required/>
+              </div>
+            </div>
+            <div class="form-group" >        
+              <label for="comment" class="control-label">Message</label>
+              <div >
+                <textarea class="form-control" row="5" type="message" placeholer="Write your Message here!!" id="comment" name="message"></textarea>
+              </div>
+            </div>
+            <div class="form-group">        
+              <div>
+                <button type="submit" class="btn btn-success">Send Message</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
      
      <!--Footer Bottom-->
-     <br/><hr width="75%" align="center"/>
+     <br/>
      <div class="footer-bottom">
         <div class="container">
             <div class="text" style="font-size:20px;color:white;text-align:center;">
@@ -314,7 +384,149 @@ Chhattisgarh State,<br/> India PIN: 492015</span></li>
         </div><!-- /.container -->
     </div>
      
-</footer>
+
+<!--modal signup-->
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sign-Up</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" method="post">
+        <div class="form-group">
+          <label for="fname" class="control-label col-sm-4">First-Name:</label>
+          <div class="col-sm-4"><input class="form-control" type="text" placeholder="First Name" id="fname" name="firstname" required/></div>
+        </div>
+        <div class="form-group">
+          <label for="lname" class="control-label col-sm-4">Last-Name:</label>
+          <div class="col-sm-4"><input class="form-control" type="text" placeholder="Last Name" id="lname" name="lastname" required/></div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="control-label col-sm-4">E-Mail:</label>
+          <div class="col-sm-4"><input class="form-control" type="text" placeholder="E-Mail Id" id="email" name="email" required/></div>
+        </div>
+        <div class="form-group">
+          <label for="dob" class="control-label col-sm-4">User Name:</label>
+          <div class="col-sm-4"><input class="form-control" type="text" placeholder="User Name" id="username" name="username" required/></div>
+        </div> 
+        <div class="form-group">
+          <label for="password" class="control-label col-sm-4">Password:</label>
+          <div class="col-sm-4">
+            <input class="form-control" type="password" placeholer="Password" id="password" name="password" required/></div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="control-label col-sm-4">Confirm-Password:</label>
+          <div class="col-sm-4">
+            <input class="form-control" type="password" placeholer="Password" id="password" name="cpassword" required/></div>
+        </div>
+        <div class="form-group">        
+          <div class="col-sm-offset-4 col-sm-2">
+            <button type="submit" class="btn btn-success">Register</button>
+          </div>
+          <div class="col-sm-2">
+            <button type="reset" class="btn btn-warning">Reset</button>
+          </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!--modal login-->
+  <div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Log-In</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" method="post">
+            <div class="form-group">
+              <label for="email" class="control-label col-sm-4">User Name</label>
+              <div class="col-sm-4"><input class="form-control" type="text" placeholder="User Name" id="email" name="username" required/></div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="control-label col-sm-4">Password:</label>
+              <div class="col-sm-4">
+              <input class="form-control" type="password" placeholer="Password" id="password" name="password" required/></div>
+            </div>
+            <div class="form-group">        
+              <div class="col-sm-offset-4 col-sm-4">
+                <div class="checkbox">
+                  <label><input type="checkbox" name="remember"> Remember me</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">        
+              <div class="col-sm-offset-4 col-sm-2">
+                <button type="submit" class="btn btn-success">Log-in</button>
+              </div>
+              <div class="col-sm-2">
+                <button type="reset" class="btn btn-warning">Reset</button>
+              </div>
+            </div>
+          </form>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--modal Contact us-->
+  <div id="myModal3" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h1 style="font-size:30px;color:teal;font-family:'Berkshire Swash';text-align:center;" class="modal-title">Contact Us</h1>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+      <div>
+          <div>
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">mail_outline</i> Email Us</h3><br/>
+              <span style="font-size:20px;color:maroon;">
+                udaan@gmail.com
+              </span>
+          </div>
+          <div>
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">call</i> Phone No.</h3>
+              <br/>
+              <span style="font-size:20px;color:maroon;">
+                +91 96 94 887366,<br/>
+                +91 76 97 518432
+              </span>
+          </div>
+          <div >
+              <h3 style="font-size:30px;color:teal;font-family:'Berkshire Swash';"><i class="material-icons" style="font-size:30px">place</i> Address</h3>
+              <br/>
+              <span style="font-size:20px;color:maroon;"> NIT Raipur,
+                      G.E. Road<br/>
+                      Raipur (City),
+                      Raipur (District),<br/>
+                      Chhattisgarh State,<br/> India PIN: 492015</span>
+          </div>
+      </div>
+  </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <!--bottom part end-->
 
